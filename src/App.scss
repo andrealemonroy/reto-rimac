@@ -1,0 +1,294 @@
+@font-face {
+  font-family: 'BRSonoma-Regular';
+  src: url('../public/fonts/BRSonoma-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BRSonoma-SemiBold';
+  src: url('../public/fonts/BRSonoma-SemiBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BRSonoma-Bold';
+  src: url('../public/fonts/BRSonoma-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.875rem 8rem;
+  &__contact-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'BRSonoma-SemiBold', sans-serif;
+    font-size: 0.75rem;
+
+    &--phone {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'BRSonoma-Bold', sans-serif;
+      font-size: 1.125rem;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #03050f;
+  color: #fff;
+  padding: 1.5rem 8rem;
+  &__company-info {
+    font-family: 'BRSonoma-Regular', sans-serif;
+    font-size: 0.875rem;
+  }
+}
+
+.page-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-container::before,
+.page-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 280px;
+  height: 100%;
+  height: calc(100% - 80px);
+}
+
+.page-container::before {
+  left: 0;
+  background: radial-gradient(
+    farthest-side at left bottom,
+    rgba(138, 43, 226, 0.5) 50%,
+    transparent
+  );
+  z-index: -1;
+}
+
+.page-container::after {
+  right: 0;
+  top: 0;
+  background: radial-gradient(
+    farthest-side at right center,
+    rgba(0, 255, 255, 0.5) 20%,
+    transparent
+  );
+  z-index: -1;
+}
+
+.main {
+  display: flex;
+  justify-content: start;
+  padding: 1.5rem 8rem;
+  gap: 8rem;
+  height: calc(100vh - 80px);
+  .hero-img {
+    width: 480px;
+    height: 560px;
+  }
+  .form-container {
+    max-width: 352px;
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    &__terms {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'BRSonoma-SemiBold', sans-serif;
+      font-size: 0.75rem;
+      text-decoration: underline;
+      margin: 0.5rem 0;
+    }
+  }
+  h1 {
+    font-size: 2rem;
+    font-family: 'BRSonoma-Bold', sans-serif;
+    margin-bottom: 0;
+    margin-top: 1rem
+  }
+  p {
+    font-size: 0.875rem;
+    font-family: 'BRSonoma-SemiBold', sans-serif;
+    margin-bottom: 1.5rem;
+  }
+}
+
+#privacidad{
+  margin-top: 8px;
+}
+
+.tag {
+  background: linear-gradient(86deg, #00f4e2 0%, #00ff7f 100%);
+  width: fit-content;
+  font-family: 'BRSonoma-Bold', sans-serif;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.input-group {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &__select,
+  &__input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+  }
+
+  &__select {
+    height: 56px;
+    position: relative;
+    &-field {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      border: 1px solid #5e6488;
+      border-right: 0;
+      border-radius: 8px 0 0 8px;
+      letter-spacing: 0.2px;
+      gap: 11.8px;
+      height: 100%;
+      cursor: pointer;
+      padding: 15px 40.28px 15px 16px;
+      select {
+        width: 140px;
+        height: 100%;
+        // padding: 15px 40.28px 15px 16px;
+        cursor: pointer;
+        font-size: inherit;
+        color: inherit;
+        z-index: 1;
+      }
+    }
+    &-arrow {
+      position: absolute;
+      right: 10px; /* Adjust as necessary */
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; /* This ensures that clicks on the arrow still open the select */
+      width: 20px; /* Adjust as necessary */
+      height: 20px; /* Adjust as necessary */
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: 1px solid #5e6488;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 8px 16px;
+    &-label {
+      color: #5e6488;
+      font-family: 'BR Sonoma', sans-serif;
+      font-size: 12px;
+      line-height: 16px;
+      // Additional styles for the input label
+    }
+
+    &-field {
+      color: #03050f;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: 'BR Sonoma', sans-serif;
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+  }
+}
+
+.input-group__checkbox {
+  display: flex;
+  align-items: center;
+  position: relative; /* Added for absolute positioning of pseudo-elements */
+  padding-left: 32px; /* Make room for the custom checkbox */
+  cursor: pointer;
+}
+
+/* Hide the default checkbox */
+.input-group__checkbox-field {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Style for the custom checkbox appearance */
+.input-group__checkbox__checkmark {
+  border: 1px solid #5e6488;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  left: 0; /* Align with the start of the text */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Size of the checkmark container */
+  height: 20px;
+  background-size: contain;
+  background: none;
+  pointer-events: none; /* Ignore pointer events so the label still toggles the checkbox */
+}
+
+/* When the checkbox is checked, use the checked state image */
+.input-group__checkbox-field:checked + .input-group__checkbox__checkmark {
+  background: url('../public/images/check.svg') no-repeat center center; /* Checked state image */
+  background-size: contain;
+  background-color: #03050f;
+}
+
+.input-group__checkbox-label {
+  font-family: 'BRSonoma-Regular', sans-serif;
+  font-size: 0.75rem;
+}
+.rounded {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.button {
+  width: fit-content;
+  padding: 1.25rem 2.5rem;
+  color: #fff;
+  font-family: 'BRSonoma-Bold', sans-serif;
+  border-radius: 40px;
+  background: #03050f;
+  outline: none;
+  //remove default button styles
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
