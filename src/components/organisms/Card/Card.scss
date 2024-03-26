@@ -1,0 +1,64 @@
+// CardSelection.scss
+.card {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 32px rgba(174, 172, 243, 0.35);
+  justify-content: center;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  width: 255px;
+  height: 212px;
+  border: 3px solid transparent;
+  padding-top: 16px;
+
+  &--selected {
+    border: 3px solid #141938;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 16px 24px;
+    height: 100%;
+    cursor: pointer;
+    gap: 8px;
+  }
+
+  &__icon {
+  }
+
+  &__info {
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-size: 14px;
+  }
+
+  &__checkmark {
+    margin-left: auto;
+    color: #4caf50;
+    opacity: 0;
+    background-color: #4caf50;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--active {
+      opacity: 1;
+    }
+  }
+}

@@ -3,12 +3,16 @@ import React from 'react';
 export const Button = ({
   children,
   onClick,
+  type = 'button',
+  color = 'primary',
 }: {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
+  color?: 'primary' | 'secondary';
 }) => {
   return (
-    <button className="button" onClick={onClick}>
+    <button className={`button button--${color}`} onClick={onClick} type={type}>
       {children}
     </button>
   );

@@ -1,0 +1,55 @@
+// Stepper.scss
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: #EDEFFC;
+
+  @media screen and (max-width: 768px) {
+    // Mobile styles
+    display: block;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 16px;
+    justify-content: center;
+    margin-right: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    &--completed {
+      .stepper__step-number {
+        background-color: #4F4FFF;
+        color: #fff;
+        border: 1px solid #4F4FFF;
+      }
+      .stepper__step-title {
+        color: #000;
+      }
+    }
+    &-number {
+      width: 25px; // Adjust as necessary
+      height: 25px; // Adjust as necessary
+      border-radius: 50%;
+      background-color: transparent;
+      border: 1px solid #7981B2;
+      color: #7981B2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-title {
+      color: #7981B2;
+    }
+    &-line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+}

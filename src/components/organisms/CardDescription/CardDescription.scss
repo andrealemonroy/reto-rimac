@@ -1,0 +1,98 @@
+// CardDescription.scss
+.card-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px rgba(174, 172, 243, 0.35);
+  padding: 32px;
+  margin: 10px 0;
+  position: relative;
+  width: 288px;
+  height: 687px;
+
+  &__tag{
+    height: 26px;
+  }
+
+  &__header {
+    margin-top: 10px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #d7dbf5;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  &__header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    &__cost {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      &-discount{
+        color: #7981B2;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        &--line-through{
+          text-decoration: line-through;
+        }
+      }
+      &-title {
+        font-size: 0.75rem;
+        font-weight: bold;
+        margin: 0;
+        color: #7981b2;
+        text-transform: uppercase;
+      }
+      &-value {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin: 0;
+        color: #141938;
+      }
+    }
+  }
+
+  &__benefits {
+    padding: 0 20px;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__benefit {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-family: 'BRSonoma-Regular';
+  }
+
+  &__select-button {
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken(#e91e63, 10%);
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+  }
+}
