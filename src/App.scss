@@ -1,60 +1,13 @@
-@font-face {
-  font-family: 'BRSonoma-Regular';
-  src: url('../public/fonts/BRSonoma-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BRSonoma-SemiBold';
-  src: url('../public/fonts/BRSonoma-SemiBold.otf') format('opentype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BRSonoma-Bold';
-  src: url('../public/fonts/BRSonoma-Bold.otf') format('opentype');
-  font-weight: bold;
-  font-style: normal;
-}
-
 * {
   -webkit-font-smoothing: antialiased;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.875rem 8rem;
-  &__contact-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-family: 'BRSonoma-SemiBold', sans-serif;
-    font-size: 0.75rem;
-
-    &--phone {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'BRSonoma-Bold', sans-serif;
-      font-size: 1.125rem;
-    }
-  }
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #03050f;
-  color: #fff;
-  padding: 1.5rem 8rem;
-  &__company-info {
-    font-family: 'BRSonoma-Regular', sans-serif;
-    font-size: 0.875rem;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'BRSonoma-Regular', sans-serif;
+  color: #141938;
+  background: #f8f9ff;
 }
 
 .page-container {
@@ -70,6 +23,10 @@
   width: 280px;
   height: 100%;
   height: calc(100% - 80px);
+  @media screen and (max-width: 768px) {
+    width: 200px;
+    height: 240px;
+  }
 }
 
 .page-container::before {
@@ -91,22 +48,72 @@
     transparent
   );
   z-index: -1;
+  @media screen and (max-width: 768px) {
+    top: -80px;
+  }
 }
 
 .main {
   display: grid;
-  grid-template-columns: repeat(12, 1fr); /* crea 12 columnas */
-  grid-gap: 4px; /* establece el gutter entre columnas */
-  padding: 1.5rem 8rem; /* ajusta el padding según sea necesario */
-  gap: 8rem; /* puede que necesites ajustar este valor para el gap vertical */
-  height: calc(100vh - 80px); /* ajusta según sea necesario */
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 4px;
+  gap: 6rem;
+  padding: 1.5rem 8rem;
+  height: calc(100vh - 80px);
+  @media screen and (max-width: 768px) {
+    padding: 0 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px;
+    padding-bottom: 80px;
+  }
+
   .hero-img {
     width: 480px;
     height: 560px;
     grid-column: span 5;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
+
+  &__title {
+    display: none;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      width: 100%;
+      grid-column: span 8;
+    }
+    &-text {
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+    .hero-img {
+      width: 136px;
+      height: 160px;
+      grid-column: span 4;
+      display: block;
+    }
+  }
+
   .form-container {
-    grid-column: span 4;
+    h1 {
+      font-size: 2rem;
+      font-family: 'BRSonoma-Bold', sans-serif;
+      margin-bottom: 0;
+      margin-top: 1rem;
+    }
+    p {
+      font-size: 0.875rem;
+      font-family: 'BRSonoma-SemiBold', sans-serif;
+      margin-bottom: 1.5rem;
+    }
+    grid-column: span 5;
+    &__title {
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
     &__form {
       display: flex;
       flex-direction: column;
@@ -122,22 +129,10 @@
       margin: 0.5rem 0;
       cursor: pointer;
     }
+    @media screen and (max-width: 768px) {
+      grid-column: span 4;
+    }
   }
-  h1 {
-    font-size: 2rem;
-    font-family: 'BRSonoma-Bold', sans-serif;
-    margin-bottom: 0;
-    margin-top: 1rem;
-  }
-  p {
-    font-size: 0.875rem;
-    font-family: 'BRSonoma-SemiBold', sans-serif;
-    margin-bottom: 1.5rem;
-  }
-}
-
-#privacidad {
-  margin-top: 8px;
 }
 
 .tag {
@@ -148,180 +143,9 @@
   border-radius: 4px;
 }
 
-.input-group {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  &__select,
-  &__input {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: transparent;
-  }
-
-  &__select {
-    height: 56px;
-    position: relative;
-    &-field {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: fit-content;
-      border: 1px solid #5e6488;
-      border-right: 0;
-      border-radius: 8px 0 0 8px;
-      letter-spacing: 0.2px;
-      gap: 11.8px;
-      height: 100%;
-      cursor: pointer;
-      font-size: 1rem;
-      padding: 15px 40.28px 15px 16px;
-      select {
-        width: 140px;
-        height: 100%;
-        // padding: 15px 40.28px 15px 16px;
-        cursor: pointer;
-
-        color: inherit;
-        z-index: 1;
-      }
-    }
-    &-arrow {
-      position: absolute;
-      right: 10px; /* Adjust as necessary */
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none; /* This ensures that clicks on the arrow still open the select */
-      width: 20px; /* Adjust as necessary */
-      height: 20px; /* Adjust as necessary */
-    }
-  }
-
-  &__input {
-    flex: 1;
-    border: 1px solid #5e6488;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    padding: 8px 16px;
-    &-label {
-      color: #5e6488;
-      font-family: 'BR Sonoma', sans-serif;
-      font-size: 12px;
-      line-height: 16px;
-      // Additional styles for the input label
-    }
-
-    &-field {
-      color: #03050f;
-      font-size: 16px;
-      line-height: 20px;
-      font-family: 'BR Sonoma', sans-serif;
-      border: none;
-      outline: none;
-      background: transparent;
-    }
-  }
-}
-
-.input-group__checkbox {
-  display: flex;
-  align-items: center;
-  position: relative; /* Added for absolute positioning of pseudo-elements */
-  padding-left: 32px; /* Make room for the custom checkbox */
-  cursor: pointer;
-}
-
-/* Hide the default checkbox */
-.input-group__checkbox-field {
-  opacity: 0;
-  position: absolute;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  margin: 0;
-  cursor: pointer;
-}
-
-/* Style for the custom checkbox appearance */
-.input-group__checkbox__checkmark {
-  border: 1px solid #5e6488;
-  border-radius: 4px;
-  display: block;
-  position: absolute;
-  left: 0; /* Align with the start of the text */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px; /* Size of the checkmark container */
-  height: 20px;
-  background-size: contain;
-  background: none;
-  pointer-events: none; /* Ignore pointer events so the label still toggles the checkbox */
-}
-
-/* When the checkbox is checked, use the checked state image */
-.input-group__checkbox-field:checked + .input-group__checkbox__checkmark {
-  background: url('../public/images/check.svg') no-repeat center center; /* Checked state image */
-  background-size: contain;
-  background-color: #03050f;
-}
-
-.input-group__checkbox-label {
-  font-family: 'BRSonoma-Regular', sans-serif;
-  font-size: 0.75rem;
-}
 .rounded {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-}
-
-.button {
-  width: fit-content;
-  padding: 1.25rem 2.5rem;
-  color: #fff;
-  font-family: 'BRSonoma-Bold', sans-serif;
-  border-radius: 40px;
-  background: #03050f;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 20px;
-  width: 100%;
-  &--primary {
-    background: #ff1c44;
-    color: #fff;
-  }
-  &--secondary {
-    background: #03050f;
-    color: #00f4e2;
-    border: 1px solid #00f4e2;
-  }
-}
-
-.input-group-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-group__checkbox-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.error-message {
-  margin-top: 0.3rem;
-  margin-bottom: 0 !important;
-  font-family: 'BRSonoma-Regular', sans-serif !important;
-  font-size: 0.75rem !important;
-  color: #ff0000;
 }
 
 .plans-container {
@@ -344,10 +168,17 @@
     gap: 8px;
     margin-bottom: 32px;
     margin-top: 32px;
+    @media screen and (max-width: 768px) {
+      grid-column: 2/16;
+      text-align: left;
+    }
     &-title {
-      font-family: 'BRSonoma-Bold', sans-serif;
+      font-family: 'Lato', sans-serif;
       font-size: 2.5rem;
       margin: 0;
+      @media screen and (max-width: 768px) {
+        font-size: 1.75rem;
+      }
     }
     &-description {
       font-family: 'BRSonoma-Regular', sans-serif;
@@ -362,6 +193,12 @@
     gap: 32px;
     justify-content: center;
     margin-bottom: 20px;
+    @media screen and (max-width: 768px) {
+      grid-column: 2/16;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
   }
   &__cards {
     grid-row: 4/4;
@@ -369,6 +206,17 @@
     display: flex;
     gap: 32px;
     justify-content: center;
+
+    @media screen and (max-width: 768px) {
+      overflow-x: auto;
+      grid-column: 1 / -1;
+      -webkit-overflow-scrolling: touch;
+
+      justify-content: flex-start;
+
+      margin-left: 16px;
+      margin-right: 16px;
+    }
   }
 }
 
@@ -381,6 +229,9 @@
     font-family: 'BRSonoma-Bold', sans-serif;
     font-size: 2.5rem;
     margin-top: 32px;
+    @media screen and (max-width: 768px) {
+      grid-column: 2/16;
+    }
   }
   &__content {
     margin-top: 48px;
@@ -393,6 +244,9 @@
     border-radius: 8px;
     background: #fff;
     padding: 24px 32px;
+    @media screen and (max-width: 768px) {
+      grid-column: 2/16;
+    }
     &__header {
       display: flex;
       flex-direction: column;
@@ -494,5 +348,8 @@
     letter-spacing: 0.4px;
     word-wrap: break-word;
     text-decoration: none;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 }

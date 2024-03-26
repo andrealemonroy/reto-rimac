@@ -1,8 +1,7 @@
-// CardDescription.scss
 .card-description {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 4px 32px rgba(174, 172, 243, 0.35);
@@ -12,7 +11,12 @@
   width: 288px;
   height: 687px;
 
-  &__tag{
+  @media screen and (max-width: 768px) {
+    padding: 24px;
+    min-width: 288px;
+  }
+
+  &__tag {
     height: 26px;
   }
 
@@ -38,11 +42,11 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      &-discount{
-        color: #7981B2;
+      &-discount {
+        color: #7981b2;
         font-size: 0.875rem;
         line-height: 1.25rem;
-        &--line-through{
+        &--line-through {
           text-decoration: line-through;
         }
       }

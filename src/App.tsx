@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import './App.scss';
-import { Header } from './components/layout/Header';
+import { Header } from './components/layout/Header/Header';
 import { Tag } from './components/molecules/Tag';
-import { Form } from './components/organisms/Form';
+import { Form } from './components/organisms/Form/Form';
 import { useForm } from 'react-hook-form';
-import { Button } from './components/molecules/Button';
-import { Footer } from './components/layout/Footer';
+import { Button } from './components/molecules/Button/Button';
+import { Footer } from './components/layout/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import PlanContext from './redux/context/PlanContext';
 
@@ -24,17 +24,26 @@ function App() {
 
   const onSubmit = (data: any) => {
     setUserData(data);
-    navigate('/planes')
+    navigate('/planes');
   };
 
   return (
     <div className="page-container">
       <Header />
       <div className="main">
+        <div className="main__title">
+          <div className="main__title-text">
+            <Tag>Seguro Salud Flexible</Tag>
+            <h1>Creado para ti y tu familia</h1>
+          </div>
+          <img src="./images/hero-image.png" alt="hero" className="hero-img" />
+        </div>
         <img src="./images/hero-image.png" alt="hero" className="hero-img" />
         <div className="form-container">
-          <Tag>Seguro Salud Flexible</Tag>
-          <h1>Creado para ti y tu familia</h1>
+          <div className="form-container__title">
+            <Tag>Seguro Salud Flexible</Tag>
+            <h1>Creado para ti y tu familia</h1>
+          </div>
           <p>
             Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra
             asesoría. 100% online.

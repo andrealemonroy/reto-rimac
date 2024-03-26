@@ -1,0 +1,37 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin font($family, $size, $weight: normal, $style: normal) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin button-style($background, $color: #fff, $radius: 40px) {
+  background: $background;
+  color: $color;
+  border-radius: $radius;
+  padding: 1.25rem 2.5rem;
+  font-family: 'BRSonoma-Bold', sans-serif;
+  font-size: 1.25rem;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  @media screen and (max-width: 768px) {
+    padding: 0.875rem 0;
+  }
+}
+
+@mixin background-radial($position, $color, $opacity: 0.5) {
+  background: radial-gradient(
+    farthest-side at $position,
+    rgba($color, $opacity) 50%,
+    transparent
+  );
+  z-index: -1;
+}

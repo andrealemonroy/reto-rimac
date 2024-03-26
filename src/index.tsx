@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import RouteNavigator from './routes';
 import PlanProvider from './redux/provider/PlanProvider'; // Ensure this is imported

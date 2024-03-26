@@ -1,9 +1,9 @@
-import React from 'react';
+import './Footer.scss';
 
 export const Footer = () => {
   return (
     <div className="footer">
-      <div>
+      <div className="footer__logo">
         <img src="./images/logo_white.svg" alt="logo" />
       </div>
       <div className="footer__company-info">

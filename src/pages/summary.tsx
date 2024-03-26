@@ -1,14 +1,12 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Title_03 } from '../components/atoms/Typography/Typography';
-import { Header } from '../components/layout/Header';
+import { Header } from '../components/layout/Header/Header';
 import { Stepper } from '../components/organisms/Stepper';
 import { useContext, useEffect } from 'react';
 import PlanContext from '../redux/context/PlanContext';
 
 export default function Summary() {
   const { userData, planDetails } = useContext(PlanContext);
-  console.log('userData', userData);
-  console.log('planDetails', planDetails);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +30,7 @@ export default function Summary() {
       <Stepper
         totalSteps={['Planes y coberturas', 'Resumen']}
         currentStep={2}
+        backPath="/planes"
       />
 
       <div className="summary-container">

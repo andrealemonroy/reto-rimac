@@ -1,0 +1,30 @@
+@import '../../../styles/mixins.scss';
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #03050f;
+  color: #fff;
+  padding: 1.5rem 8rem;
+  @media screen and (max-width: 768px) {
+    padding: 2rem;
+    flex-direction: column;
+  }
+
+  &__logo {
+    @media screen and (max-width: 768px) {
+      border-bottom: 1px solid #2b304e;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 24px;
+    }
+  }
+
+  &__company-info {
+    @include font('BRSonoma-Regular', 0.875rem);
+    @media screen and (max-width: 768px) {
+      padding-top: 24px;
+    }
+  }
+}

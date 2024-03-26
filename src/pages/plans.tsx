@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { Header } from '../components/layout/Header';
-import { Form } from '../components/organisms/Form';
+import { Header } from '../components/layout/Header/Header';
+import { Form } from '../components/organisms/Form/Form';
 import { Stepper } from '../components/organisms/Stepper';
 import { CardDescription } from '../components/organisms/CardDescription';
 import { useContext, useEffect, useState } from 'react';
@@ -44,10 +44,8 @@ export default function Plans() {
   const form = useForm();
   const navigate = useNavigate();
   const [availablePlans, setAvailablePlans] = useState<any[]>([]);
-  const [userAge, setUserAge] = useState<number>(34); // Replace with actual user's age
+  const [userAge, setUserAge] = useState<number>(0);
   const cardSelection = form.watch('cardSelection');
-
-  console.log('cardSelection', userData);
 
   useEffect(() => {
     if(!userData) {
@@ -57,7 +55,7 @@ export default function Plans() {
       try {
         const userResponse = await fetch(
           'https://rimac-front-end-challenge.netlify.app/api/user.json'
-        ); // Replace with your actual API call
+        );
         const user = await userResponse.json();
         const age = calculateAge(user.birthDay);
         setUserAge(age);
@@ -71,7 +69,6 @@ export default function Plans() {
   }, []);
 
   useEffect(() => {
-    // Fetch plans data from the API
     const fetchPlans = async () => {
       try {
         const response = await fetch(
@@ -126,7 +123,6 @@ export default function Plans() {
         {cardSelection && (
           <div className="plans-container__cards">
             {availablePlans.map((plan: any, index: number) => {
-              // Apply a 5% discount if "Para alguien más" is selected
               const finalPrice =
                 cardSelection === 'forSomeoneElse'
                   ? plan.price * 0.95
@@ -144,7 +140,7 @@ export default function Plans() {
                   onSelectPlan={() => handleSelectPlan(plan.name, finalPrice)}
                   isRecommended={plan.name === 'Plan en Casa y Clínica'}
                   showDiscount={priceBeforeDiscount}
-                  icon={plan.name.toLowerCase().replace(/\s+/g, '-') + '.svg'} // Assuming the icon name is derived from the plan name
+                  icon={plan.name.toLowerCase().replace(/\s+/g, '-') + '.svg'}
                 />
               );
             })}

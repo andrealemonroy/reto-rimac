@@ -1,15 +1,16 @@
 import React from 'react';
-import { CardSelection } from './Card';
+import { CardSelection } from '../Card';
+import './Form.scss';
 
 export const Form = ({ formInputs, form }: { formInputs: any; form: any }) => {
   const {
     register,
     formState: { errors },
-    watch, // Agrega watch para observar los cambios en los inputs, especialmente para el tipo de documento.
+    watch,
   } = form;
 
-  const documentType = watch('document'); // Observa el tipo de documento seleccionado.
-  // Add state to manage selected card
+  const documentType = watch('document');
+
   const selectedCard = watch('cardSelection');
 
   return formInputs.map((input: any, index: number) => {
@@ -105,7 +106,7 @@ export const Form = ({ formInputs, form }: { formInputs: any; form: any }) => {
                     message: 'Solo se permiten números.',
                   },
                 })}
-                type="text" // Cambia esto a 'text' para manejar mejor las validaciones de longitud.
+                type="text"
                 id={input.name}
                 className="input-group__input-field"
                 name={input.name}

@@ -1,0 +1,154 @@
+.input-group {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &__select,
+  &__input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+  }
+
+  &__select {
+    height: 56px;
+    position: relative;
+    &-field {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      border: 1px solid #5e6488;
+      border-right: 0;
+      border-radius: 8px 0 0 8px;
+      letter-spacing: 0.2px;
+      gap: 11.8px;
+      height: 100%;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 15px 40.28px 15px 16px;
+      background: transparent;
+      @media screen and (max-width: 768px) {
+        padding: 15px 16px;
+      }
+      select {
+        width: 140px;
+        height: 100%;
+        cursor: pointer;
+
+        color: inherit;
+        z-index: 1;
+      }
+    }
+    &-arrow {
+      position: absolute;
+      right: 10px; /* Adjust as necessary */
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; /* This ensures that clicks on the arrow still open the select */
+      width: 20px; /* Adjust as necessary */
+      height: 20px; /* Adjust as necessary */
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: 1px solid #5e6488;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 8px 16px;
+    &-label {
+      color: #5e6488;
+      font-family: 'BR Sonoma', sans-serif;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &-field {
+      color: #03050f;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: 'BR Sonoma', sans-serif;
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+    }
+  }
+}
+
+.input-group__checkbox {
+  display: flex;
+  align-items: center;
+  position: relative; /* Added for absolute positioning of pseudo-elements */
+  padding-left: 32px; /* Make room for the custom checkbox */
+  cursor: pointer;
+}
+
+/* Hide the default checkbox */
+.input-group__checkbox-field {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Style for the custom checkbox appearance */
+.input-group__checkbox__checkmark {
+  border: 1px solid #5e6488;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  left: 0; /* Align with the start of the text */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Size of the checkmark container */
+  height: 20px;
+  background-size: contain;
+  background: none;
+  pointer-events: none; /* Ignore pointer events so the label still toggles the checkbox */
+}
+
+/* When the checkbox is checked, use the checked state image */
+.input-group__checkbox-field:checked + .input-group__checkbox__checkmark {
+  background: url('../../../../public/images/check.svg') no-repeat center center; /* Checked state image */
+  background-size: contain;
+  background-color: #03050f;
+}
+
+.input-group__checkbox-label {
+  font-family: 'BRSonoma-Regular', sans-serif;
+  font-size: 0.75rem;
+}
+
+.input-group-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group__checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  margin-top: 0.3rem;
+  margin-bottom: 0 !important;
+  font-family: 'BRSonoma-Regular', sans-serif !important;
+  font-size: 0.75rem !important;
+  color: #ff0000;
+}
+
+#privacidad {
+  margin-top: 8px;
+}

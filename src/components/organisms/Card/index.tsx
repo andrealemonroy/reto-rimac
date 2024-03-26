@@ -1,4 +1,3 @@
-// CardSelection.tsx
 import React from 'react';
 import './Card.scss';
 import { useForm } from 'react-hook-form';

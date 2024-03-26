@@ -1,5 +1,3 @@
-// PlanContext.tsx
-
 import React, { createContext, Dispatch, SetStateAction } from 'react';
 
 interface PlanDetails {
@@ -23,12 +21,11 @@ export interface PlanContextType {
   setPlanDetails: Dispatch<SetStateAction<PlanDetails | null>>;
 }
 
-// Provide initial values matching the type above
 const PlanContext = createContext<PlanContextType>({
   userData: null,
   planDetails: null,
-  setUserData: () => {}, // This now correctly represents a function that does nothing
-  setPlanDetails: () => {}, // Same as above
+  setUserData: () => {},
+  setPlanDetails: () => {},
 });
 
 export default PlanContext;

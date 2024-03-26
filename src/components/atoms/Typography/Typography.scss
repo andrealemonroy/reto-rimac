@@ -4,4 +4,9 @@
   font-weight: bold;
   margin: 0;
   color: #141938;
+  font-family: Lato;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
 }

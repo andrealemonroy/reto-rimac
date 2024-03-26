@@ -1,7 +1,6 @@
-// CardDescription.tsx
 import React from 'react';
 import './CardDescription.scss';
-import { Button } from '../../molecules/Button';
+import { Button } from '../../molecules/Button/Button';
 import { Tag } from '../../molecules/Tag';
 
 export interface CardDescriptionProps {
