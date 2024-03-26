@@ -54,7 +54,7 @@ export default function Plans() {
     const fetchUserData = async () => {
       try {
         const userResponse = await fetch(
-          'https://rimac-front-end-challenge.netlify.app/api/user.json'
+          `${process.env.REACT_APP_API_URL}/user.json`
         );
         const user = await userResponse.json();
         const age = calculateAge(user.birthDay);
@@ -72,7 +72,7 @@ export default function Plans() {
     const fetchPlans = async () => {
       try {
         const response = await fetch(
-          'https://rimac-front-end-challenge.netlify.app/api/plans.json'
+          `${process.env.REACT_APP_API_URL}/plans.json`
         );
         const data: PlansApiResponse = await response.json();
         setAvailablePlans(data.list.filter((plan) => plan.age >= userAge));
