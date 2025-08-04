@@ -37,7 +37,7 @@ export const CardDescription: React.FC<CardDescriptionProps> = ({
             <div className="card-description__header-info__cost-discount">
               {showDiscount && (
                 <span className="card-description__header-info__cost-discount--line-through">
-                  ${showDiscount} antes
+                  {showDiscount} antes
                 </span>
               )}
             </div>
@@ -47,15 +47,40 @@ export const CardDescription: React.FC<CardDescriptionProps> = ({
           </div>
         </div>
         <div className="card-description__header-icon">
-          <img src={`/images/${icon}`} alt={title} />
+          <img src={icon ? `/images/${icon}` : '/images/default-plan.svg'} alt={title} />
         </div>
       </div>
       <ul className="card-description__benefits">
-        {benefits.map((benefit: string, index: number) => (
-          <li key={index} className="card-description__benefit">
-            {benefit}
-          </li>
-        ))}
+        {benefits.map((benefit: string, index: number) => {
+          const boldPhrases = [
+            'Médico general a domicilio',
+            'Videoconsulta',
+            'Indemnización',
+            'Consultas en clínica',
+            'Medicinas y exámenes',
+            'más de 200 clínicas del país',
+            'Un Chequeo preventivo general',
+            'Vacunas',
+            'Incluye todos los beneficios del plan en casa'
+          ];
+          
+          const formatBenefit = (text: string) => {
+            let formattedText = text;
+            boldPhrases.forEach(phrase => {
+              const regex = new RegExp(`(${phrase})`, 'gi');
+              formattedText = formattedText.replace(regex, '<strong>$1</strong>');
+            });
+            return formattedText;
+          };
+          
+          return (
+            <li 
+              key={index} 
+              className="card-description__benefit"
+              dangerouslySetInnerHTML={{ __html: formatBenefit(benefit) }}
+            />
+          );
+        })}
       </ul>
       <div className="card-description__footer">
         <Button onClick={onSelectPlan} color="primary">

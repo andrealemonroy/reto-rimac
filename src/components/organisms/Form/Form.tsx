@@ -19,7 +19,7 @@ export const Form = ({ formInputs, form }: { formInputs: any; form: any }) => {
     switch (input.type) {
       case 'document':
         inputElement = (
-          <div className="input-group-container" key={index}>
+          <div className="input-group-container">
             <div className="input-group">
               <div className="input-group__select">
                 <select
@@ -81,7 +81,7 @@ export const Form = ({ formInputs, form }: { formInputs: any; form: any }) => {
         break;
       case 'number':
         inputElement = (
-          <div className="input-group-container" key={index}>
+          <div className="input-group-container">
             <div
               className={`input-group__input rounded ${
                 errors[input.name] ? 'input-error' : ''
@@ -120,8 +120,8 @@ export const Form = ({ formInputs, form }: { formInputs: any; form: any }) => {
         break;
       case 'checkbox':
         inputElement = (
-          <div className="input-group__checkbox-container" key={index}>
-            <div className="input-group__checkbox" key={input.name}>
+          <div className="input-group__checkbox-container">
+            <div className="input-group__checkbox">
               <input
                 {...register(input.name, {
                   required: 'Este campo es obligatorio',
@@ -156,6 +156,6 @@ export const Form = ({ formInputs, form }: { formInputs: any; form: any }) => {
         break;
     }
 
-    return inputElement;
+    return <div key={index}>{inputElement}</div>;
   });
 };

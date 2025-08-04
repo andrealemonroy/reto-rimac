@@ -1,12 +1,57 @@
-$font-primary: 'BRSonoma-Regular', sans-serif;
-$font-secondary: 'BRSonoma-SemiBold', sans-serif;
-$font-bold: 'BRSonoma-Bold', sans-serif;
+$color-primary: #ff1c44;
+$color-secondary: #03050f;
+$color-success: #10b981;
+$color-warning: #f59e0b;
+$color-error: #ef4444;
 
-$primary-color: #00f4e2;
-$secondary-color: #ff1c44;
+$color-text-primary: #141938;
+$color-text-secondary: #6b7280;
+$color-text-disabled: #9ca3af;
+$color-text-placeholder: #9ca3af;
+
+$color-white: #ffffff;
+$color-background: #f9fafb;
+$color-border: #e5e7eb;
+
+$font-family-primary: 'BRSonoma-Regular', sans-serif;
+$font-family-secondary: 'BRSonoma-SemiBold', sans-serif;
+$font-family-bold: 'BRSonoma-Bold', sans-serif;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$spacing-xxs: 0.25rem;
+$spacing-xs: 0.5rem;
+$spacing-sm: 0.75rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 0.75rem;
+
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1440px;
+
+$font-primary: $font-family-primary;
+$font-secondary: $font-family-secondary;
+$font-bold: $font-family-bold;
+
+$primary-color: $color-primary;
+$secondary-color: $color-secondary;
 $background-color: #03050f;
-$text-color: #141938;
-$error-color: #ff1c44;
+$text-color: $color-text-primary;
+$error-color: $color-error;
 $hover-bg-color: #f0f0f0;
 
 $padding-default: 1.5rem 8rem;

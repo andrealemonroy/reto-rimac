@@ -19,19 +19,24 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "sass": "^1.72.0"
+    "resolve.exports": "^2.0.3",
+    "sass": "^1.72.0",
+    "workbox-webpack-plugin": "^7.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "test:ci": "CI=true react-scripts test --coverage --reporters=default --reporters=jest-junit",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write src/**/*.{ts,tsx,scss,css}",
+    "format:check": "prettier --check src/**/*.{ts,tsx,scss,css}",
+    "type-check": "tsc --noEmit",
+    "precommit": "lint-staged",
+    "analyze": "npm run build && npx source-map-explorer 'build/static/js/*.js'"
   },
   "browserslist": {
     "production": [
@@ -43,6 +48,15 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{scss,css}": [
+      "prettier --write"
     ]
   }
 }

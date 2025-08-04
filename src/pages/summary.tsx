@@ -1,26 +1,25 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Title_03 } from '../components/atoms/Typography/Typography';
+import { Title03 } from '../components/atoms/Typography/Typography';
 import { Header } from '../components/layout/Header/Header';
 import { Stepper } from '../components/organisms/Stepper';
-import { useContext, useEffect } from 'react';
-import PlanContext from '../redux/context/PlanContext';
+import { useEffect } from 'react';
+import { useInsuranceApplication } from '../redux/context/PlanContext';
 
 export default function Summary() {
-  const { userData, planDetails } = useContext(PlanContext);
+  const { state } = useInsuranceApplication();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!planDetails) {
-      if (!userData?.document) {
-        console.log(userData, 'IN');
+    if (!state.plans.selectedPlan) {
+      if (!state.user.currentUser) {
         navigate('/');
       } else {
         navigate('/planes');
       }
     }
-  }, [planDetails, userData]);
+  }, [state.plans.selectedPlan, state.user.currentUser, navigate]);
 
-  if (!planDetails || !userData) {
+  if (!state.plans.selectedPlan || !state.user.currentUser) {
     return null;
   }
 
@@ -39,7 +38,7 @@ export default function Summary() {
           <Link to="/planes">Volver</Link>
         </div>
         <div className="summary-container__title">
-          <Title_03>Resumen del seguro</Title_03>
+          <Title03>Resumen del seguro</Title03>
         </div>
         <div className="summary-container__content">
           <div className="summary-container__content__header">
@@ -53,7 +52,7 @@ export default function Summary() {
                 className="summary-container__content__header__name__icon"
               />
               <p className="summary-container__content__header__name__text">
-                {userData.name} {userData.lastName}
+                {state.user.currentUser.name} {state.user.currentUser.lastName}
               </p>
             </div>
           </div>
@@ -64,10 +63,10 @@ export default function Summary() {
                   Responsable de pago
                 </div>
                 <div className="summary-container__content__body__user__value">
-                  {userData.document?.toUpperCase()}: {userData.documentNumber}
+                  {state.user.currentUser.documentType?.toUpperCase()}: {state.user.currentUser.documentNumber}
                 </div>
                 <div className="summary-container__content__body__user__value">
-                  Celular: {userData.celular}
+                  Celular: {state.user.currentUser.phoneNumber}
                 </div>
               </div>
             </div>
@@ -77,10 +76,10 @@ export default function Summary() {
                   Plan elegido
                 </div>
                 <div className="summary-container__content__body__plan__value">
-                  {planDetails.name}
+                  {state.plans.selectedPlan.planName}
                 </div>
                 <div className="summary-container__content__body__plan__value">
-                  Costo del Plan: ${planDetails.price} al mes
+                  Costo del Plan: ${state.plans.selectedPlan.finalPrice} al mes
                 </div>
               </div>
             </div>

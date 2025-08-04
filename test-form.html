@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Test</title>
+</head>
+<body>
+    <h1>Form Navigation Test</h1>
+    <p>To test the form, fill out:</p>
+    <ul>
+        <li>Document Type: Select DNI (default)</li>
+        <li>Document Number: Enter exactly 8 digits (e.g., 12345678)</li>
+        <li>Phone: Enter exactly 9 digits (e.g., 987654321)</li>
+        <li>Check both privacy checkboxes</li>
+        <li>Click "Cotiza aquí"</li>
+    </ul>
+    
+    <p><strong>Expected behavior:</strong> Form should navigate to /planes page</p>
+    <p><strong>If it doesn't work:</strong> Check console for validation errors</p>
+    
+    <script>
+        console.log('Instructions for testing the form:');
+        console.log('1. Go to http://localhost:3000');
+        console.log('2. Fill document number with 8 digits');
+        console.log('3. Fill phone with 9 digits'); 
+        console.log('4. Check both checkboxes');
+        console.log('5. Click submit button');
+        console.log('Expected: Navigate to /planes');
+    </script>
+</body>
+</html>

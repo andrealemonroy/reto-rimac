@@ -49,12 +49,12 @@
     }
     &-arrow {
       position: absolute;
-      right: 10px; /* Adjust as necessary */
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      pointer-events: none; /* This ensures that clicks on the arrow still open the select */
-      width: 20px; /* Adjust as necessary */
-      height: 20px; /* Adjust as necessary */
+      pointer-events: none;
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -87,12 +87,11 @@
 .input-group__checkbox {
   display: flex;
   align-items: center;
-  position: relative; /* Added for absolute positioning of pseudo-elements */
-  padding-left: 32px; /* Make room for the custom checkbox */
+  position: relative;
+  padding-left: 32px;
   cursor: pointer;
 }
 
-/* Hide the default checkbox */
 .input-group__checkbox-field {
   opacity: 0;
   position: absolute;
@@ -103,25 +102,23 @@
   cursor: pointer;
 }
 
-/* Style for the custom checkbox appearance */
 .input-group__checkbox__checkmark {
   border: 1px solid #5e6488;
   border-radius: 4px;
   display: block;
   position: absolute;
-  left: 0; /* Align with the start of the text */
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px; /* Size of the checkmark container */
+  width: 20px;
   height: 20px;
   background-size: contain;
   background: none;
-  pointer-events: none; /* Ignore pointer events so the label still toggles the checkbox */
+  pointer-events: none;
 }
 
-/* When the checkbox is checked, use the checked state image */
 .input-group__checkbox-field:checked + .input-group__checkbox__checkmark {
-  background: url('../../../../public/images/check.svg') no-repeat center center; /* Checked state image */
+  background: url('../../../../public/images/check.svg') no-repeat center center;
   background-size: contain;
   background-color: #03050f;
 }

@@ -3,23 +3,14 @@ import { Header } from '../components/layout/Header/Header';
 import { Form } from '../components/organisms/Form/Form';
 import { Stepper } from '../components/organisms/Stepper';
 import { CardDescription } from '../components/organisms/CardDescription';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { calculateAge } from '../utils';
-import PlanContext from '../redux/context/PlanContext';
+import { useInsuranceApplication } from '../redux/context/PlanContext';
+import { InsurancePlan } from '../types';
 
-interface Plan {
-  name: string;
-  price: number;
-  description: string[];
-  age: number;
-}
-
-interface PlansApiResponse {
-  list: Plan[];
-}
 export default function Plans() {
-  const { userData, setUserData, setPlanDetails } = useContext(PlanContext);
+  const { state, setSelectedPlan } = useInsuranceApplication();
 
   const formInputs = [
     {
@@ -43,56 +34,32 @@ export default function Plans() {
   ];
   const form = useForm();
   const navigate = useNavigate();
-  const [availablePlans, setAvailablePlans] = useState<any[]>([]);
   const [userAge, setUserAge] = useState<number>(0);
   const cardSelection = form.watch('cardSelection');
-
   useEffect(() => {
-    if(!userData) {
+    if (!state.user.currentUser) {
       navigate('/');
+    } else {
+      const age = calculateAge(state.user.currentUser.birthDate);
+      setUserAge(age);
     }
-    const fetchUserData = async () => {
-      try {
-        const userResponse = await fetch(
-          `${process.env.REACT_APP_API_URL}/user.json`
-        );
-        const user = await userResponse.json();
-        const age = calculateAge(user.birthDay);
-        setUserAge(age);
-        setUserData((prevUserData) => ({ ...prevUserData, ...user }));
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  }, [state.user.currentUser, navigate]);
 
   useEffect(() => {
-    const fetchPlans = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/plans.json`
-        );
-        const data: PlansApiResponse = await response.json();
-        setAvailablePlans(data.list.filter((plan) => plan.age >= userAge));
-      } catch (error) {
-        console.error('Error fetching plans:', error);
-      }
-    };
-
-    if (userData) {
-      fetchPlans();
+    if (state.user.currentUser && userAge > 0) {
     }
-  }, [userData]);
+  }, [state.user.currentUser, userAge]);
 
   const handleSelectPlan = (planName: string, planPrice: number) => {
     form.setValue('selectedPlan', planName);
     const planDetails = {
-      name: planName,
-      price: planPrice,
+      planId: planName,
+      planName: planName,
+      finalPrice: planPrice,
+      originalPrice: planPrice,
+      selectedAt: new Date().toISOString(),
     };
-    setPlanDetails(planDetails);
+    setSelectedPlan(planDetails);
 
     navigate('/resumen');
   };
@@ -122,25 +89,25 @@ export default function Plans() {
         </div>
         {cardSelection && (
           <div className="plans-container__cards">
-            {availablePlans.map((plan: any, index: number) => {
+            {state.plans.availablePlans.map((plan: InsurancePlan, index: number) => {
               const finalPrice =
                 cardSelection === 'forSomeoneElse'
-                  ? plan.price * 0.95
-                  : plan.price;
+                  ? plan.monthlyPrice * 0.95
+                  : plan.monthlyPrice;
 
               const priceBeforeDiscount =
-                finalPrice !== plan.price ? plan.price : null;
+                finalPrice !== plan.monthlyPrice ? plan.monthlyPrice : null;
 
               return (
                 <CardDescription
                   key={index}
                   title={plan.name}
                   cost={`$${finalPrice} al mes`}
-                  benefits={plan.description}
+                  benefits={plan.benefits}
                   onSelectPlan={() => handleSelectPlan(plan.name, finalPrice)}
-                  isRecommended={plan.name === 'Plan en Casa y Clínica'}
-                  showDiscount={priceBeforeDiscount}
-                  icon={plan.name.toLowerCase().replace(/\s+/g, '-') + '.svg'}
+                  isRecommended={plan.isRecommended}
+                  showDiscount={priceBeforeDiscount ? `$${priceBeforeDiscount}` : null}
+                  icon={plan.iconUrl || plan.name.toLowerCase().replace(/\s+/g, '-') + '.svg'}
                 />
               );
             })}

@@ -30,15 +30,15 @@ export const CardSelection: React.FC<CardSelectionProps> = ({
         defaultChecked={selectedValue === id}
       />
       <label htmlFor={id} className="card__label">
-        <div
-          className={`card__checkmark ${
-            selectedValue === id ? 'card__checkmark--active' : ''
-          }`}
-        >
-          {selectedValue === id && (
-            <span className="card__checkmark__icon">
-              <img src="/images/check-card.svg" alt="Seleccionado" />
-            </span>
+        <div className="card__checkmark">
+          {selectedValue === id ? (
+            <div className="card__checkmark-selected">
+              <img src="/images/check.svg" alt="Seleccionado" />
+            </div>
+          ) : (
+            <div className="card__radio">
+              <div className="card__radio-dot"></div>
+            </div>
           )}
         </div>
         <div className="card__icon">
