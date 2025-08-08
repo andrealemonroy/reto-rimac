@@ -124,7 +124,7 @@ export class InsuranceApiService {
 }
 
 export const insuranceApiService = new InsuranceApiService(
-  process.env.REACT_APP_API_URL || 'https://fitnessprogym.com'
+  process.env.REACT_APP_API_URL || ''
 );
 
 export const apiService = insuranceApiService;
